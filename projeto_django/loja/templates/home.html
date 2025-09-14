@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Loja de Informática</title>
+    <style>
+        body {
+            background-color: gray;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            background-color: #6d8ce8;
+            padding: 10px;
+            margin: 0;
+        }
+        .produto {
+            background-color: #6d8ce8;
+            margin: 20px;
+            margin-bottom: 100px;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            width: 90%;
+        }
+        .produto img {
+            width: 120px;
+            height: auto;
+            border-radius: 6px;
+        }
+        .produto-info {
+            flex: 1;
+        }
+        .produto-info h2 {
+            margin: 0;
+            font-size: 20px;
+            color: black;
+        }
+        .produto-info h3 {
+            color: blue;
+            font-size: 18px;
+            margin: 8px 0;
+        }
+        .produto-info p {
+            margin: 4px 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Produtos</h1>
+    <hr>
+    <h1><a href="{% url 'listainfo' %}">Perfil</a></h1>
+    <hr>
+    <h1><a href="{% url 'carrinho' %}">Ver Carrinho</a></h1>
+    <hr>
+    {% for produto in produtos %}
+    <div class="produto">
+        <img src="{{ produto.image }}" alt="{{ produto.title }}">
+        <div class="produto-info">
+            <h2>{{ produto.title }}</h2>
+            <h3>Preço: ${{ produto.price }}</h3>
+            <p>{{ produto.description }}</p>
+            <a href="{% url 'adicionar' produto.id %}">Adicionar ao carrinho</a>
+        </div>
+    </div>
+    {% endfor %}
+</body>
+</html>
