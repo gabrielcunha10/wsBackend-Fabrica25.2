@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deletar cadastro</title>
+    <style>
+        body {
+        background-color: gray;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family: Arial, sans-serif;
+    }
+    fieldset {
+        background-color: #6d8ce8;
+        padding: 20px;
+        border-radius: 10px;
+        width: 350px;
+        text-align: center;
+    }
+    h1 {
+        margin-bottom: 20px;
+    }
+    h2 {
+        margin: 10px 0;
+    }
+    </style>
+</head>
+<body>
+    <fieldset>
+     <form method="post">
+        {% csrf_token %}
+        <h2>Tem certeza que deseja deletar {{ deletacadastro.nome }} {{ deletacadastro.sobrenome }}?</h2>
+        <button type="submit">Sim</button>
+        <a href="{% url 'listainfo' %}">Cancelar</a>
+    </form>
+    </fieldset>
+</body>
+</html>

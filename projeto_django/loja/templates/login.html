@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN</title>
+    <style>
+    #imagem-login {
+    display: flex;
+    }
+    #header {
+    background-color: #6d8ce8;
+    display: flex;
+    flex-wrap: 20px;
+    }
+    #informacoes {
+    text-align: right;
+    margin-right: 1225px;
+    }
+    body {
+    background-color: gray;
+    }
+    #login {
+    text-align: center;
+    margin-top: 60px;
+    }
+    fieldset {
+    background-color: #6d8ce8;
+    max-width: 330px;
+    margin: auto;
+    margin-bottom: 15px;
+    text-align: center;
+    }
+    </style>
+</head>
+<body>
+    <div id="login">
+        <fieldset>
+            <form method="post">
+                {%csrf_token%}
+                <h1>Já tem uma conta?</h1>
+                <h3>Informe seus dados para acessá-la.</h3>
+                <h2>E-mail:<br>
+                <input type="email" name="email" required></h2>
+                <h2>Senha:<br>
+                <input type="password" name="senha" required></h2>
+                <h3>Caso não tenha uma conta, <a href="{% url 'cadastropessoa' %}">cadastre-se aqui.</a></h3>
+                <button type="submit">Fazer Login</button>
+            </form>
+            {% if messages %}
+                <ul style="list-style: none; padding: 0; text-align: center;">
+                    {% for message in messages %}
+                        <h2 style="color: red;">{{ message }}</h2>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+    </fieldset>
+    </div>
+</body>
+</html>

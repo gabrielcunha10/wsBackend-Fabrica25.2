@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CADASTRO</title>
+    <style>
+    #imagem-login {
+        display: flex;
+    }
+    #header {
+        background-color: #6d8ce8;
+        display: flex;
+        flex-wrap: 20px;
+    }
+    #informacoes {
+        text-align: right;
+        margin-right: 1225px;
+    }
+    body {
+        background-color: gray;
+    }
+    #cadastro {
+        text-align: center;
+        margin-top: 60px;
+    }
+    fieldset {
+        background-color: #6d8ce8;
+        max-width: 330px;
+        margin: auto;
+    }
+    #sobrenome {
+        margin-right: 30px;
+    }
+    #criar_conta {
+        font-size: 13px;
+        margin-top: 30px;
+    }
+    </style>
+</head>
+<body>
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <h2 style="color: red;">{{ message }}</h2>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div id="cadastro">
+        <fieldset>
+        <h1>Cadastro</h1>
+        <form method="post">
+            {%csrf_token %}
+            <h2>Nome:<br>
+                {{ form.nome }}
+            </h2>
+            <h2>Sobrenome:<br>
+                {{ form.sobrenome }}
+            </h2>
+            <h2>CPF:<br>
+                {{ form.cpf }}
+            </h2>
+            <h2>RG:<br>
+                {{ form.rg }}
+            </h2>
+            <h2>E-mail:<br>
+                {{ form.email }}
+            </h2>
+            {% if request.GET.acao == "redefinir" or modo == "criar" %}
+                <h2>Senha:<br>
+                    {{ form.senha }}
+                </h2>
+            {% endif %}
+            <h3>Caso tenha uma conta, <a href="{% url 'login' %}">Faça o login aqui.</a></h3>
+            <button type="submit">Salvar</button>
+            </form>
+        </fieldset>
+    </div>
+</body>
+</html>
