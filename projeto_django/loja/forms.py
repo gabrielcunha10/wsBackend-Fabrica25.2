@@ -3,7 +3,7 @@ from .models import Cadastro
 from django.contrib.auth.hashers import make_password
 
 class CadastroForm(forms.ModelForm):
-    senha = forms.CharField(widget=forms.PasswordInput())
+    senha = forms.CharField(widget=forms.PasswordInput(), required=False)
 
     class Meta:
         model = Cadastro

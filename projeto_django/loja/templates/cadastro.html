@@ -36,44 +36,48 @@
         font-size: 13px;
         margin-top: 30px;
     }
+    form p {
+    font-size: 2em;       
+    font-weight: bold;     
+    margin-bottom: 15px;   
+}
+
+form label {
+    display: block;        
+    margin-bottom: 5px;
+}
+
+form input, form select, form textarea {
+    font-size: 20px;        
+    padding: 3px;
+    width: 300px;    
+    height: 30px;       
+    box-sizing: border-box;
+}
     </style>
 </head>
 <body>
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <h2 style="color: red;">{{ message }}</h2>
-            {% endfor %}
-        </ul>
-    {% endif %}
     <div id="cadastro">
-        <fieldset>
+    <fieldset>
         <h1>Cadastro</h1>
-        <form method="post">
-            {%csrf_token %}
-            <h2>Nome:<br>
-                {{ form.nome }}
-            </h2>
-            <h2>Sobrenome:<br>
-                {{ form.sobrenome }}
-            </h2>
-            <h2>CPF:<br>
-                {{ form.cpf }}
-            </h2>
-            <h2>RG:<br>
-                {{ form.rg }}
-            </h2>
-            <h2>E-mail:<br>
-                {{ form.email }}
-            </h2>
-            {% if request.GET.acao == "redefinir" or modo == "criar" %}
-                <h2>Senha:<br>
-                    {{ form.senha }}
-                </h2>
-            {% endif %}
-            <h3>Caso tenha uma conta, <a href="{% url 'login' %}">Faça o login aqui.</a></h3>
-            <button type="submit">Salvar</button>
-            </form>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% if not request.GET.acao == "redefinir" and not modo == "criar" %}
+            <style>
+                #id_senha, #id_senha + label {
+                    display: none;
+                    color: gray;
+                }
+                label[for="id_senha"] {
+                 color: gray; 
+                font-size: 0; 
+                }
+            </style>
+        {% endif %}
+        <h3>Caso tenha uma conta, <a href="{% url 'login' %}">Faça o login aqui.</a></h3>
+        <button type="submit">Salvar</button>
+    </form>
         </fieldset>
     </div>
 </body>
