@@ -28,8 +28,15 @@ source venv/bin/activate
 ```
 
 ---
+### 2. Entrar na pasta do projeto Django
 
-### 2. Instalar dependências  
+```bash
+cd projeto_django
+```
+
+---
+
+### 3. Instalar dependências  
 
 ```bash
 pip install django
@@ -38,7 +45,7 @@ pip install requests
 
 ---
 
-### 3. Aplicar migrações  
+### 4. Aplicar migrações  
 
 ```bash
 python manage.py migrate
@@ -46,7 +53,7 @@ python manage.py migrate
 
 ---
 
-### 4. Criar superusuário (opcional, para acessar o Django Admin)  
+### 5. Criar superusuário (opcional, para acessar o Django Admin)  
 
 ```bash
 python manage.py createsuperuser
@@ -56,7 +63,7 @@ Acesse o painel administrativo em: [http://127.0.0.1:8000/admin]
 
 ---
 
-### 5. Rodar o servidor de desenvolvimento  
+### 6. Rodar o servidor de desenvolvimento  
 
 ```bash
 python manage.py runserver
